@@ -1,0 +1,6 @@
+# Compiled output
+/node_modules
+
+# Ignore cookies
+*.cookie
+/cookies/
