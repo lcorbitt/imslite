@@ -1,6 +1,8 @@
 import React from 'react';
 import { useQuery, useMutation } from 'react-query';
 
+import ProductEdit from "./ProductEdit"
+
 import moment from 'moment';
 
 interface Product {
@@ -23,14 +25,14 @@ const fetchProducts = async (): Promise<Product[]> => {
 const ProductsList: React.FC = () => {
   const { data, isLoading, isError, refetch } = useQuery<Product[]>('products', fetchProducts);
 
-  //  delete Product
+  // delete the Product
   const deleteProductMutation = useMutation(async (id: number) => {
     await fetch(`/api/products/${id}`, {
       method: "DELETE",
     });
   }, {
     onSuccess: () => {
-      // refetch the data after deleting the product
+      // refetch the data after deleting the Product
       refetch();
     }
   });
@@ -45,10 +47,10 @@ const ProductsList: React.FC = () => {
 
   return (
     <div className='section-padding'>
-      <h3 className="text-center text-[1.5rem] mb-8">Products</h3>
+      <h2 className="text-center font-bold mb-8">Products</h2>
       
       <div className="relative overflow-x-auto">
-        <table className="w-full text-sm text-left rtl:text-right text-white">
+        <table className="w-full text-sm text-left text-white">
           <thead className="text-xs uppercase bg-green-500">
             <tr className="text-center">
               <th className="px-6 py-3">
@@ -79,14 +81,14 @@ const ProductsList: React.FC = () => {
           </thead>
           <tbody className="text-center">
             {data && data.map((product: Product) => (
-              <tr className="border-b bg-gray-200 text-black" key={product.id}>
-                <th scope="row" className="px-6 py-4 font-medium text-black whitespace-nowrap">{product.id}</th>
+              <tr className="bg-gray-200 text-black" key={product.id}>
+                <th scope="row" className="px-6 py-8 font-medium text-black whitespace-nowrap">{product.id}</th>
                 <td>{product.serial}</td>
                 <td>{product.name}</td>
                 <td>{product.description}</td>
                 <td>{product.quantity}</td>
                 <td>{moment(product.created_at).format("MM/DD/YYYY")}</td>
-                <td><button className="btn btn-info">Edit</button></td>
+                <td><ProductEdit product={product}/></td>
                 <td>
                   <button
                     className="btn btn-danger"

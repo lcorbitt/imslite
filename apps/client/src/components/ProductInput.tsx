@@ -24,7 +24,7 @@ const ProductInput = () => {
 
   return (
     <div className="section-padding">
-      <h3 className="text-center text-[1.5rem] mb-8">New Product</h3>
+      <h2 className="text-center mb-8 font-bold">New Product</h2>
 
       <form className="flex flex-col w-6/12 mx-auto" onSubmit={onSubmitForm}>
         <label>Serial No.</label>

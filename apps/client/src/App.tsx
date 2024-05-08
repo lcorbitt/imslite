@@ -23,8 +23,8 @@ function App() {
             <Link to="/products/new" className="btn btn-info">Add Product</Link>
           </div>
           <Routes>
-            <Route path="/products/new" element={<ProductInput />} />
             <Route path="/" element={<ProductsList />} />
+            <Route path="/products/new" element={<ProductInput />} />
           </Routes>
         </div>
       </Router>

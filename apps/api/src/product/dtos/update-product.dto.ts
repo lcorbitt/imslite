@@ -1,5 +1,6 @@
 export class UpdateProductDto {
-  name?: string;
-  description?: string;
-  quantity?: number;
+  serial?: string = '';
+  name?: string = '';
+  description?: string = '';
+  quantity?: number = 0;
 }

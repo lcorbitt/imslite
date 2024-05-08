@@ -23,6 +23,10 @@ input {
   @apply rounded bg-gray-100 p-2 mt-2 mb-8 border-2;
 }
 
+tr {
+  @apply border-b-2 border-solid border-gray-300;
+}
+
 .btn {
   @apply text-white rounded py-4 px-6 h-min;
 }
@@ -33,6 +37,10 @@ input {
 
 .btn-info {
   @apply bg-blue-500;
+}
+
+.btn-warning {
+  @apply bg-yellow-500 text-black;
 }
 
 .btn-success {
