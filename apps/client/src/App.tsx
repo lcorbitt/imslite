@@ -6,12 +6,12 @@ import ProductInput from './components/ProductInput';
 import ProductsList from './components/ProductsList'; 
 
 
-// Create a new instance of QueryClient
+// create a new instance of QueryClient
 const queryClient = new QueryClient();
 
 function App() {
   return (
-    // Wrap your entire application with QueryClientProvider and pass the queryClient instance
+    // wrap your entire application with QueryClientProvider and pass the queryClient instance
     <QueryClientProvider client={queryClient}>
       <Router>
         <div>

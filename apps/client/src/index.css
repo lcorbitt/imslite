@@ -27,6 +27,10 @@ input {
   @apply text-white rounded py-4 px-6 h-min;
 }
 
+.btn-danger {
+  @apply bg-red-500;
+}
+
 .btn-info {
   @apply bg-blue-500;
 }

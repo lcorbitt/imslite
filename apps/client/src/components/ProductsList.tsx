@@ -1,5 +1,5 @@
 import React from 'react';
-import { useQuery } from 'react-query';
+import { useQuery, useMutation } from 'react-query';
 
 import moment from 'moment';
 
@@ -21,12 +21,24 @@ const fetchProducts = async (): Promise<Product[]> => {
 };
 
 const ProductsList: React.FC = () => {
-  const { data, isLoading, isError } = useQuery<Product[]>('products', fetchProducts);
+  const { data, isLoading, isError, refetch } = useQuery<Product[]>('products', fetchProducts);
+
+  //  delete Product
+  const deleteProductMutation = useMutation(async (id: number) => {
+    await fetch(`/api/products/${id}`, {
+      method: "DELETE",
+    });
+  }, {
+    onSuccess: () => {
+      // refetch the data after deleting the product
+      refetch();
+    }
+  });
 
   if (isLoading) return <p className='section-padding text-center'>Loading...</p>;
   if (isError) return <p className='section-padding text-center'>Error fetching data</p>;
 
-  // Check if data is empty
+  // check if data is empty
   if (data && data.length === 0) {
     return <p className='section-padding text-center'>No products available</p>;
   }
@@ -39,35 +51,50 @@ const ProductsList: React.FC = () => {
         <table className="w-full text-sm text-left rtl:text-right text-white">
           <thead className="text-xs uppercase bg-green-500">
             <tr className="text-center">
-              <th scope="col" className="px-6 py-3">
+              <th className="px-6 py-3">
                 ID
               </th>
-              <th scope="col" className="px-6 py-3">
+              <th className="px-6 py-3">
                 Serial No.
               </th>
-              <th scope="col" className="px-6 py-3">
+              <th className="px-6 py-3">
                 Name
               </th>
-              <th scope="col" className="px-6 py-3">
+              <th className="px-6 py-3">
                 Description
               </th>
-              <th scope="col" className="px-6 py-3">
+              <th className="px-6 py-3">
                 Quantity
               </th>
-              <th scope="col" className="px-6 py-3">
+              <th className="px-6 py-3">
                 Date Created
+              </th>
+              <th className="px-6 py-3">
+                {/* edit button placeholder */}
+              </th>
+              <th className="px-6 py-3">
+                {/* delete button placeholder */}
               </th>
             </tr>
           </thead>
           <tbody className="text-center">
             {data && data.map((product: Product) => (
-              <tr className="bg-white border-b bg-gray-200 text-black" key={product.id}>
+              <tr className="border-b bg-gray-200 text-black" key={product.id}>
                 <th scope="row" className="px-6 py-4 font-medium text-black whitespace-nowrap">{product.id}</th>
                 <td>{product.serial}</td>
                 <td>{product.name}</td>
                 <td>{product.description}</td>
                 <td>{product.quantity}</td>
                 <td>{moment(product.created_at).format("MM/DD/YYYY")}</td>
+                <td><button className="btn btn-info">Edit</button></td>
+                <td>
+                  <button
+                    className="btn btn-danger"
+                    onClick={() => deleteProductMutation.mutate(product.id)}
+                  >
+                    Delete
+                  </button>
+                </td>
               </tr>
             ))}
           </tbody>
