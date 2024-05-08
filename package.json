@@ -9,5 +9,8 @@
   },
   "workspaces": [
     "apps/*"
-  ]
+  ],
+  "dependencies": {
+    "moment": "^2.30.1"
+  }
 }
