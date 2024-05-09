@@ -5,13 +5,10 @@ import { QueryClient, QueryClientProvider } from 'react-query'; // Import QueryC
 import ProductInput from './components/ProductInput'; 
 import ProductsList from './components/ProductsList'; 
 
-
-// create a new instance of QueryClient
 const queryClient = new QueryClient();
 
 function App() {
   return (
-    // wrap your entire application with QueryClientProvider and pass the queryClient instance
     <QueryClientProvider client={queryClient}>
       <Router>
         <div>

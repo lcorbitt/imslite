@@ -10,14 +10,14 @@ const ProductInput = () => {
     e.preventDefault();
     try {
       const body = { serial, name, description, quantity };
-      const response = await fetch("/api/products", {
+      await fetch("/api/products", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body)
       });
-
+  
       window.location.href = "/";
-    } catch (err) {
+    } catch (err: any) {
       console.error(err.message)
     }
   };

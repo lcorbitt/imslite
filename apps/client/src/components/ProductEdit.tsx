@@ -24,7 +24,7 @@ const ProductEdit: React.FC<ProductEditProps> = ({ product }) => {
     e.preventDefault();
     try {
       const body = { serial, name, description, quantity };
-      const response = await fetch(`/api/products/${product.id}`, {
+      await fetch(`/api/products/${product.id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body)
@@ -33,7 +33,7 @@ const ProductEdit: React.FC<ProductEditProps> = ({ product }) => {
       toggleModal()
 
       window.location.href = "/";
-    } catch (err) {
+    } catch (err: any) {
       console.error(err.message);
     }
   };
@@ -137,8 +137,8 @@ const ProductEdit: React.FC<ProductEditProps> = ({ product }) => {
                   onChange={e => {
                     const value = e.target.value;
                     if (value === '') {
-                      // if input is empty, set quantity state to an empty string
-                      setQuantity('');
+                      // if input is empty, set quantity state to be 0
+                      setQuantity(0);
                     } else {
                       // otherwise, parse the input value as an integer
                       const parsedValue = parseInt(value, 10);
