@@ -75,12 +75,12 @@ const ProductEdit: React.FC<ProductEditProps> = ({ product }) => {
       {isOpen && (
         <div
           className="fixed inset-0 flex items-center justify-center z-50"
-          onClick={closeModal} // Close modal when clicking outside of it
+          onClick={closeModal} // close modal when clicking outside of it
         >
           <div className="fixed inset-0 bg-black opacity-50"></div>
           <div
             className="bg-white p-8 rounded-lg z-50 relative w-6/12 section-padding"
-            onClick={preventClosingModal} // Prevent modal from closing when clicking inside it
+            onClick={preventClosingModal} // prevent modal from closing when clicking inside it
           >
             {/* Close Button */}
             <button
@@ -137,14 +137,14 @@ const ProductEdit: React.FC<ProductEditProps> = ({ product }) => {
                   onChange={e => {
                     const value = e.target.value;
                     if (value === '') {
-                      // If input is empty, set quantity state to an empty string
+                      // if input is empty, set quantity state to an empty string
                       setQuantity('');
                     } else {
-                      // Otherwise, parse the input value as an integer
+                      // otherwise, parse the input value as an integer
                       const parsedValue = parseInt(value, 10);
-                      // Check if the parsed value is NaN
+                      // check if the parsed value is NaN
                       if (!isNaN(parsedValue)) {
-                        // If not NaN, update the quantity state with the parsed value
+                        // if not NaN, update the quantity state with the parsed value
                         setQuantity(parsedValue);
                       }
                     }
