@@ -26,6 +26,8 @@ For this project, the "api" directory holds the backend code and the "client" di
 npm run dev
 ```
 
+Once the containers are up and running, you can access the frontend application at http://localhost:8000.
+
 ---
 
 *These would be my instructions if I got Docker to work correctly:*
