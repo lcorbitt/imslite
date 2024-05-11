@@ -54,9 +54,6 @@ const ProductsList: React.FC = () => {
           <thead className="text-xs uppercase bg-green-500">
             <tr className="text-center">
               <th className="px-6 py-3">
-                ID
-              </th>
-              <th className="px-6 py-3">
                 Serial No.
               </th>
               <th className="px-6 py-3">
@@ -82,8 +79,7 @@ const ProductsList: React.FC = () => {
           <tbody className="text-center">
             {data && data.map((product: Product) => (
               <tr className="bg-gray-200 text-black" key={product.id}>
-                <th scope="row" className="px-6 py-8 font-medium text-black whitespace-nowrap">{product.id}</th>
-                <td>{product.serial}</td>
+                <th scope="row" className="px-6 py-8 font-medium text-black whitespace-nowrap">{product.serial}</th>
                 <td>{product.name}</td>
                 <td>{product.description}</td>
                 <td>{product.quantity}</td>
