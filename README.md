@@ -1,4 +1,4 @@
-# Inventory Management System
+# IMSLite (Inventory Management System)
 
 This is a simple Inventory Management System built with NestJS for the backend, React for the frontend, and PostgreSQL for the database.
 
